@@ -1,14 +1,21 @@
+import { useState } from "react";
 import logo from "../images/movie-library-colorfull-background-transparent.PNG";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 function NavBar() {
   const styles = {
     backgroundColor: "rgba(3, 37, 65, 1)",
   };
 
+  const [isPlusHover, setPlusIsHover] = useState(false);
+  const [isLanguageHover, setIsLanguageHover] = useState(false);
+  const [isBellHover, setIsBellHover] = useState(false);
+  const [isSearchHover, setIsSearchHover] = useState(false);
+
   return (
     <div className="text-white h-16 flex items-center" style={styles}>
       <div className="content px-10 w-full flex justify-between">
-        <div className="sub-media flex flex-row">
+        <div className="sub-media flex flex-row list-none font-medium">
           <a href="/" aria-label="Home">
             <img
               src={logo}
@@ -17,23 +24,85 @@ function NavBar() {
               className="h-16 w-auto"
             />
           </a>
-          <ul className="flex flex-row items-center font-semibold">
-            <li className="p-2 m-2 cursor-pointer">Movies</li>
-            <li className="p-2 m-2 cursor-pointer">TV Shows</li>
-            <li className="p-2 m-2 cursor-pointer">People</li>
-            <li className="p-2 m-2 cursor-pointer">More</li>
-          </ul>
+          <li className="p-2 m-2 group cursor-pointer">
+            <span>Movies</span>
+            <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/popular">Popular</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/now-playing">Now Playing</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/upcoming">Upcoming</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/top-rated">Top Rated</a>
+              </li>
+            </ul>
+          </li>
+          <li className="p-2 m-2 group relative cursor-pointer">
+            <span>TV Shows</span>
+            <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/tv-popular">Popular</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/airing-today">Airing Today</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/on-tv">On Tv</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/tv-top-rated">Top Rated</a>
+              </li>
+            </ul>
+          </li>
+          <li className="p-2 m-2 group relative cursor-pointer">
+            <span>People</span>
+            <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/popular-people">Popular People</a>
+              </li>
+            </ul>
+          </li>
+          <li className="p-2 m-2 group relative cursor-pointer">
+            <span>More</span>
+            <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/discussions">Discussions</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/leaderboard">Leaderboard</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/support">Support</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/API-documentation">API Documentation</a>
+              </li>
+              <li className="px-3 py-1.5 hover:bg-blue-100">
+                <a href="/API-business">API for Business</a>
+              </li>
+            </ul>
+          </li>
         </div>
         <div className="nav_wrapper flex flex-row items-center">
           <ul className="flex flex-row">
             {/*plus*/}
-            <li className="flex items-center p-2 m-2 cursor-pointer">
+            <li
+              className={`flex items-center p-2 m-2 rounded-full w-10 h-10 cursor-pointer border-1 border-solid rounded-full w-10 h-10 transition duration-300 ease-in-out ${
+                isPlusHover && "bg-white"
+              }`}
+              onMouseEnter={() => setPlusIsHover(true)}
+              onMouseLeave={() => setPlusIsHover(false)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={4}
-                stroke="currentColor"
+                stroke={isPlusHover ? "rgba(3, 37, 65, 1)" : "currentColor"}
                 className="size-6"
               >
                 <path
@@ -44,19 +113,29 @@ function NavBar() {
               </svg>
             </li>
             {/*languege*/}
-            <li className="flex items-center p-2 m-2">
-              <span className="cursor-pointer border-1 border-solid px-2 rounded-md">
-                EN
-              </span>
+            <li
+              className={`flex justify-center items-center p-2 m-2 border-1 border-solid rounded-full w-10 h-10 px-2 font-bold transition duration-300 ease-in-out ${
+                isLanguageHover && "bg-white"
+              } ${isLanguageHover && "text-slate-900"}`}
+              onMouseEnter={() => setIsLanguageHover(true)}
+              onMouseLeave={() => setIsLanguageHover(false)}
+            >
+              <span className="cursor-pointer">EN</span>
             </li>
             {/*bell*/}
-            <li className="flex items-center p-2 m-2 cursor-pointer">
+            <li
+              className={`flex items-center p-2 m-2 cursor-pointer border-1 border-solid rounded-full w-10 h-10 transition duration-300 ease-in-out ${
+                isBellHover && "bg-white"
+              }`}
+              onMouseEnter={() => setIsBellHover(true)}
+              onMouseLeave={() => setIsBellHover(false)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
-                stroke="currentColor"
+                stroke={isBellHover ? "rgba(3, 37, 65, 1)" : "currentColor"}
                 className="size-6"
               >
                 <path
@@ -71,11 +150,17 @@ function NavBar() {
               <span className="cursor-pointer">P</span>
             </li>
             {/*search*/}
-            <li className="flex items-center p-2 m-2 cursor-pointer">
+            <li
+              className={`flex items-center p-2 m-2 cursor-pointer border-1 border-solid rounded-full w-10 h-10 transition duration-300 ease-in-out ${
+                isSearchHover && "bg-white"
+              }`}
+              onMouseEnter={() => setIsSearchHover(true)}
+              onMouseLeave={() => setIsSearchHover(false)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
-                fill="currentColor"
+                fill={isSearchHover ? "rgba(3, 37, 65, 1)" : "currentColor"}
                 className="size-6"
               >
                 <path
