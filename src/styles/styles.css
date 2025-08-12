@@ -3,3 +3,26 @@
 body {
   font-family: "Source Sans 3", Arial, sans-serif;
 }
+
+@layer utilities {
+  /* Chrome, Edge, Safari */
+  ::-webkit-scrollbar {
+    height: 6px; /* solo horizontal */
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent; /* pista invisible */
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4); /* color suave */
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.6); /* un poco más visible */
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+  }
+}

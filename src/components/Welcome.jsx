@@ -2,9 +2,9 @@ import image from "../images/section.new_index.background_1.jpg";
 
 function Welcome() {
   return (
-    <section>
-      <div className="h-[100vh] min-h-[300px] max-h-[360px] w-screen bg-[url('../images/section.new_index.background_1.jpg')] bg-cover bg-center flex flex-col justify-center items-center">
-        <div className="px-10 py-8 flex flex-col w-[1300px]">
+    <section className="overflow-x-hidden w-full bg-[url('../images/section.new_index.background_1.jpg')] bg-cover bg-center ">
+      <div className="h-[100vh] min-h-[300px] max-h-[360px] flex flex-col justify-center items-center">
+        <div className="px-10 py-8 flex flex-col w-full max-w-[1300px]">
           <div>
             <h1 className="text-[48px] text-white font-bold h-13">Welcome.</h1>
             <h2 className="text-[32px] text-white font-semibold">
