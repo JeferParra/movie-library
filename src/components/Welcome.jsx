@@ -3,7 +3,7 @@ import image from "../images/section.new_index.background_1.jpg";
 function Welcome() {
   return (
     <section>
-      <div className="min-h-[300px] w-full bg-[url('../images/section.new_index.background_1.jpg')] bg-cover bg-center flex flex-col justify-center">
+      <div className="h-[100vh] min-h-[300px] max-h-[360px] w-full bg-[url('../images/section.new_index.background_1.jpg')] bg-cover bg-center flex flex-col justify-center">
         <div className="px-10 py-8 flex flex-col">
           <div>
             <h1 className="text-[48px] text-white font-bold h-13">Welcome.</h1>
