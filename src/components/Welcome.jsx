@@ -1,9 +1,16 @@
-import image from "../images/section.new_index.background_1.jpg";
-
 function Welcome() {
+  const randomImage = Math.floor(Math.random() * 23) + 1;
+  const backgroundImage = `/images/section.new_index.background_${randomImage}.webp`;
   return (
-    <section className="overflow-x-hidden w-full bg-[url('../images/section.new_index.background_1.jpg')] bg-cover bg-center ">
-      <div className="h-[100vh] min-h-[300px] max-h-[360px] flex flex-col justify-center items-center">
+    <section className={`overflow-x-hidden w-full`}>
+      <div
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="h-[100vh] min-h-[300px] max-h-[360px] flex flex-col justify-center items-center"
+      >
         <div className="px-10 py-8 flex flex-col w-full max-w-[1300px]">
           <div>
             <h1 className="text-[48px] text-white font-bold h-13">Welcome.</h1>

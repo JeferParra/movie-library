@@ -1,4 +1,4 @@
-import logo from "../images/movie-library-colorfull-background-transparent.PNG";
+import logo from "/images/movie-library-colorfull-background-transparent.PNG";
 
 function Footer() {
   const styles = {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import logo from "../images/movie-library-colorfull-background-transparent.PNG";
+import logo from "/images/movie-library-colorfull-background-transparent.PNG";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 function NavBar() {
