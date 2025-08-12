@@ -13,8 +13,11 @@ function NavBar() {
   const [isSearchHover, setIsSearchHover] = useState(false);
 
   return (
-    <div className="text-white h-16 flex items-center" style={styles}>
-      <div className="content px-10 w-full flex justify-between">
+    <div
+      className="text-white h-16 flex items-center w-full justify-center"
+      style={styles}
+    >
+      <div className="content px-10 flex justify-between  w-[1300px]">
         <div className="sub-media flex flex-row list-none font-medium">
           <a href="/" aria-label="Home">
             <img
