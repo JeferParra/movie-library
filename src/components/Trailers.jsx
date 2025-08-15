@@ -90,7 +90,7 @@ function Trailers() {
                   </div>
                   <div
                     className={`py-1 px-5 w-35  transition-colors duration-300 ease-in-out ${
-                      typeMovieSelected === "Popular"
+                      typeMovieSelected === "Upcoming"
                         ? "border-solid border-1 border-[#1ed5a9] rounded-full text-black bg-gradient-to-r from-[#c0fecf] to-[#1ed5a9]"
                         : "text-white border-transparent bg-transparent"
                     }`}
@@ -124,7 +124,7 @@ function Trailers() {
                   </div>
                   <div
                     className={`py-1 px-5 w-35  transition-colors duration-300 ease-in-out ${
-                      typeMovieSelected === "Upcoming"
+                      typeMovieSelected === "Popular"
                         ? "border-solid border-1 border-[#1ed5a9] rounded-full text-black bg-gradient-to-r from-[#c0fecf] to-[#1ed5a9]"
                         : "text-white border-transparent bg-transparent"
                     }`}
@@ -181,7 +181,7 @@ function Trailers() {
                   </div>
                   <div
                     className={`py-1 px-5 w-35  transition-colors duration-300 ease-in-out ${
-                      typeTVSerieSelected === "Popular"
+                      typeTVSerieSelected === "Top Rated"
                         ? "border-solid border-1 border-[#1ed5a9] rounded-full text-black bg-gradient-to-r from-[#c0fecf] to-[#1ed5a9]"
                         : "text-white border-transparent bg-transparent"
                     }`}
@@ -197,7 +197,7 @@ function Trailers() {
                   </div>
                   <div
                     className={`py-1 px-5 w-35  transition-colors duration-300 ease-in-out ${
-                      typeTVSerieSelected === "Top Rated"
+                      typeTVSerieSelected === "Popular"
                         ? "border-solid border-1 border-[#1ed5a9] rounded-full text-black bg-gradient-to-r from-[#c0fecf] to-[#1ed5a9]"
                         : "text-white border-transparent bg-transparent"
                     }`}
