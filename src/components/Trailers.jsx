@@ -1,5 +1,8 @@
 import { useState } from "react";
 
+import movies from "../../movies";
+import TrailerCard from "./TrailerCard";
+
 function Trailers() {
   const backgroundImage =
     "https://image.tmdb.org/t/p/w1920_and_h427_multi_faces/s94NjfKkcSczZ1FembwmQZwsuwY.jpg";
@@ -99,7 +102,7 @@ function Trailers() {
                         console.log(typeMovieSelected);
                       }}
                     >
-                      Popular
+                      Upcoming
                     </span>
                   </div>
                   <div
@@ -133,7 +136,7 @@ function Trailers() {
                         console.log(typeMovieSelected);
                       }}
                     >
-                      Upcoming
+                      Popular
                     </span>
                   </div>
                 </div>
@@ -189,7 +192,7 @@ function Trailers() {
                         setTypeTVSerieSelected(e.target.textContent);
                       }}
                     >
-                      Popular
+                      Top Rated
                     </span>
                   </div>
                   <div
@@ -205,44 +208,17 @@ function Trailers() {
                         setTypeTVSerieSelected(e.target.textContent);
                       }}
                     >
-                      Top Rated
+                      Popular
                     </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="py-5 pl-5 flex flex-row">
-            <div className="ml-5 w-75">
-              <div className="image relative cursor-pointer">
-                <img
-                  src={imagen}
-                  alt="nombre de la pelicula"
-                  className="rounded-lg"
-                />
-                <div className="play absolute inset-0 flex items-center justify-center">
-                  <span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="64"
-                      height="64"
-                      viewBox="0 0 24 24"
-                      fill="white"
-                      className="icon icon-tabler icons-tabler-filled icon-tabler-player-play"
-                    >
-                      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                      <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z" />
-                    </svg>
-                  </span>
-                </div>
-              </div>
-              <div className="content flex flex-col text-white w-full items-center mt-2.5 h-auto leading-none">
-                <h2 className="font-semibold text-[19.2px]">
-                  The Fantastic 4: Firts Steps
-                </h2>
-                <h3>Silver Surfer</h3>
-              </div>
-            </div>
+          <div className="py-5 pl-5 flex flex-row flex-nowrap overflow-hidden overflow-x-auto w-screen max-w-[1300px]">
+            {movies.map((movie) => (
+              <TrailerCard key={movie.id} movie={movie} />
+            ))}
           </div>
         </div>
       </div>
