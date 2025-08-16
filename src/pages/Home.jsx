@@ -2,6 +2,7 @@ import Welcome from "../components/Welcome";
 import Trending from "../components/Trending";
 import Trailers from "../components/Trailers";
 import Popular from "../components/Popular";
+import FreeToWatch from "../components/FreeToWatch";
 
 function Home() {
   return (
@@ -10,6 +11,7 @@ function Home() {
       <Trending />
       <Trailers />
       <Popular />
+      <FreeToWatch />
     </div>
   );
 }
