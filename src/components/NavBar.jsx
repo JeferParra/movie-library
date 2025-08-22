@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import logo from "/images/movie-library-colorfull-background-transparent.PNG";
-import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 function NavBar() {
   const styles = {
@@ -12,9 +11,33 @@ function NavBar() {
   const [isBellHover, setIsBellHover] = useState(false);
   const [isSearchHover, setIsSearchHover] = useState(false);
 
+  const [showNav, setShowNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // scrolling down → hide navbar
+        setShowNav(false);
+      } else {
+        // scrolling up → show navbar
+        setShowNav(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
     <div
-      className="text-white h-16 flex items-center w-full justify-center"
+      className={`text-white h-16 flex items-center w-full justify-center fixed top-0 left-0 w-full z-50 transition-transform duration-600 ${
+        showNav ? "translate-y-0" : "-translate-y-full"
+      }`}
       style={styles}
     >
       <div className="content px-10 flex justify-between  w-[1300px]">
@@ -31,16 +54,24 @@ function NavBar() {
             <span>Movies</span>
             <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/popular">Popular</a>
+                <a href="/popular" className="flex">
+                  Popular
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/now-playing">Now Playing</a>
+                <a href="/now-playing" className="flex">
+                  Now Playing
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/upcoming">Upcoming</a>
+                <a href="/upcoming" className="flex">
+                  Upcoming
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/top-rated">Top Rated</a>
+                <a href="/top-rated" className="flex">
+                  Top Rated
+                </a>
               </li>
             </ul>
           </li>
@@ -48,16 +79,24 @@ function NavBar() {
             <span>TV Shows</span>
             <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/tv-popular">Popular</a>
+                <a href="/tv-popular" className="flex">
+                  Popular
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/airing-today">Airing Today</a>
+                <a href="/airing-today" className="flex">
+                  Airing Today
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/on-tv">On Tv</a>
+                <a href="/on-tv" className="flex">
+                  On Tv
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/tv-top-rated">Top Rated</a>
+                <a href="/tv-top-rated" className="flex">
+                  Top Rated
+                </a>
               </li>
             </ul>
           </li>
@@ -65,7 +104,9 @@ function NavBar() {
             <span>People</span>
             <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/popular-people">Popular People</a>
+                <a href="/popular-people" className="flex">
+                  Popular People
+                </a>
               </li>
             </ul>
           </li>
@@ -73,19 +114,29 @@ function NavBar() {
             <span>More</span>
             <ul className="absolute hidden group-hover:block mt-2 w-38 rounded-xl border border-black/5 bg-gray-200 p-1 text-sm text-black shadow-lg">
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/discussions">Discussions</a>
+                <a href="/discussions" className="flex">
+                  Discussions
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/leaderboard">Leaderboard</a>
+                <a href="/leaderboard" className="flex">
+                  Leaderboard
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/support">Support</a>
+                <a href="/support" className="flex">
+                  Support
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/API-documentation">API Documentation</a>
+                <a href="/API-documentation" className="flex">
+                  API Documentation
+                </a>
               </li>
               <li className="px-3 py-1.5 hover:bg-blue-100">
-                <a href="/API-business">API for Business</a>
+                <a href="/API-business" className="flex">
+                  API for Business
+                </a>
               </li>
             </ul>
           </li>
