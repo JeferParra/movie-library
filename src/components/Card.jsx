@@ -27,7 +27,7 @@ function Card({ movie }) {
         alt="Weaponds"
         className="h-[225px] rounded-lg"
       />
-      <div className="flex flex-col items-start text pt-6.5 px-2.5 w-37.5 transform -translate-y-11">
+      <div className="flex flex-col items-start text pt-6.5 px-2.5 w-37.5 -mt-11">
         <div className="flex justify-start">
           <CircularProgressbar
             value={voteAverage}

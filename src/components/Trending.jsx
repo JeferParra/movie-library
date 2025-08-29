@@ -1,10 +1,33 @@
-import movies from "../../movies";
 import Card from "./Card";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+const urlAPI = "https://api.themoviedb.org/3";
+const apiKey = import.meta.env.VITE_TMDB_API_KEY;
+const language = "en-US";
 
 function Trending() {
   const [typeSelected, setTypeSelected] = useState("Today");
+
+  const [trending, setTrending] = useState([]);
+
+  useEffect(() => {
+    const filter = typeSelected === "Today" ? "day" : "week";
+
+    const fetchToday = async () => {
+      try {
+        const resToday = await fetch(
+          `${urlAPI}/trending/all/${filter}?api_key=${apiKey}&language=${language}`
+        );
+        const dataToday = await resToday.json();
+        setTrending(dataToday.results);
+      } catch (error) {
+        console.error("Error by trending movies today: ", error);
+      }
+    };
+
+    fetchToday();
+  }, [typeSelected]);
 
   return (
     <div className="pt-7.5 w-screen max-w-[1300px] select-none focus:outline-none">
@@ -21,6 +44,7 @@ function Trending() {
             <span
               className="cursor-pointer"
               onClick={(e) => {
+                setTrending([]);
                 setTypeSelected(e.target.textContent);
               }}
             >
@@ -37,6 +61,7 @@ function Trending() {
             <span
               className="cursor-pointer"
               onClick={(e) => {
+                setTrending([]);
                 setTypeSelected(e.target.textContent);
               }}
             >
@@ -45,8 +70,8 @@ function Trending() {
           </div>
         </div>
       </div>
-      <div className="flex flex-row gap-5 py-5 mx-10 flex-nowrap overflow-hidden overflow-x-auto h-[356px]">
-        {movies.map((movie) => (
+      <div className="flex flex-row gap-5 py-5 mx-10 flex-nowrap overflow-hidden overflow-x-auto min-h-[356px]">
+        {trending.map((movie) => (
           <Card key={movie.id} movie={movie} />
         ))}
       </div>
